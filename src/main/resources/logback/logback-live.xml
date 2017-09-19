@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="FILE_LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger{36}:%L] ### %msg%n"/>
+
+    <appender name="dailyRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}.txt</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.txt</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!--<appender name="restAppender" class="com.hellowd.appender.RestAppender">-->
+        <!--<host>http://14.49.47.173:17000</host>-->
+        <!--<path>/api/logs</path>-->
+        <!--<topic>callgate</topic>-->
+        <!--<mode>ERROR</mode>-->
+    <!--</appender>-->
+
+    <logger name="org.apache.catalina" level="OFF"/>
+    
+    <root level="INFO">
+        <appender-ref ref="dailyRolling"/>
+        <!--<appender-ref ref="restAppender"/>-->
+    </root>
+</configuration>

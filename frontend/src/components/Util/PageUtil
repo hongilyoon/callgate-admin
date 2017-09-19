@@ -1,0 +1,25 @@
+import React, {Component} from 'react';
+
+class PageUtil extends Component {
+    render() {
+
+        let dialog;
+        if (this.props.title == '') {
+            dialog = (
+                <div>aaaaa</div>
+            );
+        }
+        else {
+            dialog = (
+                <div>bbbbb</div>
+            );
+        }
+
+
+        return (
+            {dialog}
+        )
+    }
+}
+
+export default PageUtil;
